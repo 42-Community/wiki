@@ -17,5 +17,7 @@ php maintenance/run.php install "42 Community" $ADMIN_USERNAME \
 # TODO: Find correspoding install script option
 sed "s|\$wgScriptPath = '/html';|\$wgScriptPath = '';|" -i LocalSettings.php
 
+echo "require_once 'ExtraLocalSettings.php';" >> LocalSettings.php
+
 # Replace process with apache2
 exec apache2-foreground

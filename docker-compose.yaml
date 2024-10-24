@@ -33,7 +33,6 @@ services:
   database:
     image: mariadb
     restart: always
-    # Make use of the healthcheck.sh script given by the mariadb image
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       start_period: 10s

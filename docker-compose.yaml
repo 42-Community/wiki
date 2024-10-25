@@ -21,11 +21,13 @@ services:
       # this yaml and uncomment the following line and use compose to restart
       # the mediawiki service
       # - ./LocalSettingsDemo.php:/var/www/html/LocalSettings.php
+    env_file:
+      - .env/mediawiki-env
     environment:
       DATABASE_URL: database
-    env_file:
-      - .mediawiki-env
-      - .database-env
+      DATABASE_NAME: $DATABASE_NAME
+      DATABASE_USER: $DATABASE_USER
+      DATABASE_PASSWORD: $DATABASE_PASSWORD
 
   # This key also defines the name of the database host used during setup instead of the default "localhost"
   database:
@@ -39,8 +41,12 @@ services:
       timeout: 5s
       retries: 3
     env_file:
-      - .database-env
-      - .mysql-env
+      - .env/mysql-env
+    environment:
+      MYSQL_DATABASE: $DATABASE_NAME
+      MYSQL_USER: $DATABASE_USER
+      MYSQL_PASSWORD: $DATABASE_PASSWORD
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
     volumes:
       - db:/var/lib/mysql
 

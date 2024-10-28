@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 function generate_password() {
 	chars_upper="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	chars_lower="abcdefghijklmnopqrstuvwxyz"
 	chars_number="0123456789"
-	chars_special="!@#$%^&*()"
+	chars_special="!@#%^&*()"
 
 	password=""
 
